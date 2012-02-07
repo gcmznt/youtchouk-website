@@ -8,7 +8,7 @@ body {
 
 h1 a {
 	text-indent: -1000em;
-	background: url('../img/title.png') center center no-repeat;
+	background: url('../img/title_new.png') center center no-repeat;
 	height: 170px;
 	display: block;
 }
@@ -211,3 +211,10 @@ h2 em {
 	background-position: center bottom;
 }
 
+.loading {
+	background: url('../img/loader.gif');
+	display: block;
+	width: 31px;
+	height: 31px;
+	text-indent: -1000em;
+}
