@@ -4,8 +4,8 @@
         $("#search_result").append('<div class="navi"></div>');
         $("#search_result").scrollable();
         loadFeed(main_feed, '#search_result .items', 'full', 6);
-        loadFeed('https://gdata.youtube.com/feeds/api/users/tchoukballpromotion/uploads?alt=json&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
-        loadFeed('https://gdata.youtube.com/feeds/api/users/tchoukballpromotion/uploads?alt=json&orderby=rating&max-results=6', '#top ul', 'list');
+        loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
+        loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=rating&max-results=6', '#top ul', 'list');
 
         $('#search_form').submit(function() {
             var query = $('#search_text').val();
@@ -57,11 +57,11 @@
         rate = (video.gd$rating) ? video.gd$rating.average : 0;
 
         if (style == 'full')
-            return '<div class="video"><a href="/?v=' + id + '"><img src="' + thumb + '" /></a><p>' + title + '</p></div>';
+            return '<a href="/?v=' + id + '" class="video"><img src="' + thumb + '" /><p>' + title + '</p></a>';
         if (style == 'list')
             return '<li><a href="/?v=' + id + '">' + title + '</a></li>';
         if (style == 'list_views')
-            return '<li><a href="/?v=' + id + '">'+views+' &bull; ' + title + '</a></li>';
+            return '<li><a href="/?v=' + id + '">' + title + '<span>'+views+'</span></a></li>';
         if (style == 'list_rate')
             return '<li><a href="/?v=' + id + '">'+rate+' &bull; ' + title + '</a></li>';
     }

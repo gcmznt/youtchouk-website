@@ -19,6 +19,9 @@ h2 {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+h2 em {
+	font-style: italic;
+}
 
 #wrapper {
 	width: 960px;
@@ -112,21 +115,27 @@ h2 {
 }
 
 .video {
-	width: 200px;
-	height: 185px;
+	width: 180px;
+	height: 175px;
 	float: left;
-	margin-right: 20px;
+	margin-right: 2px;
 	overflow: hidden;
 	margin-bottom: 10px;
-	font-size: 85%;
+	font-size: 80%;
+	padding: 5px 16px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
 }
 .video:nth-child(3n) {
 	margin-right: 0px;
 }
 .video img {
-	width: 200px;
+	width: 180px;
 }
-
+.video:hover {
+	background: #171717;
+}
 
 #search_result {
 	position: relative;
@@ -159,6 +168,9 @@ h2 {
 	text-overflow: ellipsis;
 	color: #666;
 	text-decoration: none;
+}
+#most_viewed ul a span {
+	float: right;
 }
 
 #social a {

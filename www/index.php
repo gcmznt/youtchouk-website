@@ -12,10 +12,11 @@
     <script type="text/javascript" src="resources/js/jquery.tools.min.js"></script>
     <script type="text/javascript" src="resources/js/javascript.js"></script>
     <script type="text/javascript">
-        <?php if (isset($_GET['q'])) { ?>
-        var main_feed = 'https://gdata.youtube.com/feeds/api/users/tchoukballpromotion/uploads?alt=json&orderby=updated&max-results=30&q=<?php echo $_GET['q']; ?>';
-        <?php } else { ?>
-        var main_feed = 'https://gdata.youtube.com/feeds/api/users/tchoukballpromotion/uploads?alt=json&orderby=updated&max-results=30';
+        var channel = 'tchoukballpromotion';
+        var maxResults = 30;
+        <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResults+'&q=<?php echo $_GET['q']; ?>';
+        <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated&max-results='+maxResults;
+        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResults;
         <?php } ?>
     </script>
 </head>
@@ -24,7 +25,7 @@
         <h1><a href="./">YouTchouk</a></h1>
         <div id="menu" class="box">
             <ul>
-                <li><a href="?q=ewc">EWC</a></li>
+                <li><a href="?t=2011">2011</a></li>
                 <li><a href="#">Categoria 2</a></li>
                 <li><a href="#">Categoria 3</a></li>
                 <li><a href="#">Categoria 4</a></li>
@@ -36,13 +37,15 @@
         </div>
         <?php if (isset($_GET['v'])) { ?>
         <div id="video" class="box">
-            <iframe width="640" height="480" src="http://www.youtube.com/embed/<?php echo $_GET['v']; ?>" frameborder="0" allowfullscreen></iframe>
+            <iframe width="640" height="480" src="http://www.youtube.com/embed/<?php echo $_GET['v']; ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
         </div>
         <?php } else { ?>
         <div id="titolo" class="box">
             <h2><?php
                 if (isset($_GET['q']))
-                    echo 'Search results for '.$_GET['q'];
+                    echo 'Search results for <em>'.$_GET['q'].'</em>';
+                elseif (isset($_GET['t']))
+                    echo $_GET['t'];
                 else
                     echo 'Most recent';
             ?></h2>
