@@ -53,7 +53,7 @@
         <div id="results" class="box">
             <div id="search_result">
                 <div class="items">
-
+                    <span class="loading">Loading...</span>
                 </div>
             </div>
         </div>
@@ -65,11 +65,11 @@
         </div>
         <div id="most_viewed" class="box">
             <h3>Most viewed</h3>
-            <ul></ul>
+            <ul><span class="loading">Loading...</span></ul>
         </div>
         <div id="top" class="box">
             <h3>Best</h3>
-            <ul></ul>
+            <ul><span class="loading">Loading...</span></ul>
         </div>
         <div id="adsense" class="box">
             <div class="adsense_wrapper">

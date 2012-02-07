@@ -26,26 +26,33 @@
             url: feed,
             dataType: 'jsonp',
             success: function(data) {
-                if (videoPerPage > 0) {
-                    var pageTpl = $('<div class="page"></div>');
-                    var page = pageTpl.clone();
-                    for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
-                        page.append(_formatVideo(data.feed.entry[i - 1], style));
-                        if((i % videoPerPage) === 0) {
+                if (data.feed.openSearch$totalResults.$t == 0) {
+                    container.html('').append('No results');
+                } else {
+                    if (videoPerPage > 0) {
+                        var result = $('');
+                        var pageTpl = $('<div class="page"></div>');
+                        var page = pageTpl.clone();
+                        for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
+                            page.append(_formatVideo(data.feed.entry[i - 1], style));
+                            if((i % videoPerPage) === 0) {
+                                container.append(page);
+                                page = pageTpl.clone();
+                            }
+                        }
+                        if (page.html() != '')
                             container.append(page);
-                            page = pageTpl.clone();
+                    } else {
+                        for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
+                            container.append(_formatVideo(data.feed.entry[i - 1], style));
                         }
                     }
-                    if (page.html() != '')
-                        container.append(page);
-                } else {
-                    for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
-                        container.append(_formatVideo(data.feed.entry[i - 1], style));
+                    container.find('.loading').remove();
+                    if (container.selector == '#search_result .items' && container.find('.page').length > 1) {
+                        $("#search_result").navigator();
                     }
                 }
-                $("#search_result").navigator();
-            },
-            error: function(wtf) {/*console.log(wtf);*/}
+            }
         });
     }
 
