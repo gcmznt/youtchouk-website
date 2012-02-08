@@ -9,7 +9,7 @@
 
         $('#search_form').submit(function() {
             var query = $('#search_text').val();
-            document.location.href = '?q='+query;
+            document.location.href = '?q='+encodeURIComponent(query);
             return false;
         });
     });
@@ -24,7 +24,7 @@
 
         $.ajax({
             url: feed,
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function(data) {
                 if (data.feed.openSearch$totalResults.$t == 0) {
                     container.html('').append('No results');

@@ -13,11 +13,23 @@
     <script type="text/javascript" src="resources/js/javascript.js"></script>
     <script type="text/javascript">
         var channel = 'tchoukballpromotion';
-        var maxResults = 30;
-        <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResults+'&q=<?php echo $_GET['q']; ?>';
-        <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated&max-results='+maxResults;
-        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResults;
+        var maxResultsHome = 30;
+        <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&q=<?php echo $_GET['q']; ?>';
+        <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated';
+        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome;
         <?php } ?>
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-6536789-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
     </script>
 </head>
 <body>
@@ -60,7 +72,7 @@
         <?php } ?>
         <div id="search" class="box">
             <form id="search_form">
-                <input id="search_text" />
+                <input id="search_text" <?php if (isset($_GET['q'])) echo ' value="'.$_GET['q'].'"'; ?>/>
             </form>
         </div>
         <div id="most_viewed" class="box">
@@ -89,18 +101,6 @@
             <a id="yt" href="http://www.youtube.com/youtchouk"></a>
         </div>
     </div>
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-6536789-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
 </body>
 </html>
     
