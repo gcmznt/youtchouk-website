@@ -107,11 +107,11 @@ h2 em {
 
 #search_text {
 	height: 25px;
-	width: 235px;
+	width: 200px;
 	background: #fff url('../img/search.png') 98% center no-repeat;
 	border: 0 none;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 5px 40px 5px 5px;
 }
 
 .video {
