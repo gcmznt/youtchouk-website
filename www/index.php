@@ -12,8 +12,8 @@
     <script type="text/javascript" src="resources/js/jquery.tools.min.js"></script>
     <script type="text/javascript" src="resources/js/javascript.js"></script>
     <script type="text/javascript">
-        var channel = 'youtchouk';
-        var maxResultsHome = 30;
+        var channel = 'tchoukballpromotion';
+        var maxResultsHome = 6;
         <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&q=<?php echo $_GET['q']; ?>';
         <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated';
         <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome;

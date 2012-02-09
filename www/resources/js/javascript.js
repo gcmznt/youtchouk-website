@@ -2,7 +2,17 @@
     $(document).ready(function() {
 
         $("#search_result").append('<div class="navi"></div>');
-        $("#search_result").scrollable();
+        $("#search_result").scrollable({
+            onBeforeSeek: function(e, p) {
+                var pages = $('.items .page');
+                for (i = p; i <= i+1; i++) {
+                    var page = $(pages[i]);
+                    if (page.html() == '') {
+                        loadFeed(main_feed+'&start-index='+page.attr('rel'), '#search_result .items', 'full', 6);
+                    }
+                }
+            }
+        });
         loadFeed(main_feed, '#search_result .items', 'full', 6);
         loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
         loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=rating&max-results=6', '#top ul', 'list');
@@ -35,11 +45,9 @@
                             container.append('<div class="page" rel="' + start + '"></div>');
                         }
                         var pages = $('.items .page');
-                        console.log(pages);
                         var offset = data.feed.openSearch$startIndex.$t;
                         for(i = 0, l = data.feed.entry.length; i < l; i++) {
                             var page = Math.floor((i + offset - 1) / videoPerPage);
-                            console.log(pages[page]);
                             $(pages[page]).append(_formatVideo(data.feed.entry[i], style));
                         }
                     } else {
