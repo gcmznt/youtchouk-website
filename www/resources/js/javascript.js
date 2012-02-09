@@ -30,18 +30,18 @@
                     container.html('').append('No results');
                 } else {
                     if (videoPerPage > 0) {
-                        var result = $('');
-                        var pageTpl = $('<div class="page"></div>');
-                        var page = pageTpl.clone();
-                        for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
-                            page.append(_formatVideo(data.feed.entry[i - 1], style));
-                            if((i % videoPerPage) === 0) {
-                                container.append(page);
-                                page = pageTpl.clone();
-                            }
+                        for (i = 0, l = Math.ceil(data.feed.openSearch$totalResults.$t / videoPerPage); i < l; i++) {
+                            var start = i * videoPerPage + 1;
+                            container.append('<div class="page" rel="' + start + '"></div>');
                         }
-                        if (page.html() != '')
-                            container.append(page);
+                        var pages = $('.items .page');
+                        console.log(pages);
+                        var offset = data.feed.openSearch$startIndex.$t;
+                        for(i = 0, l = data.feed.entry.length; i < l; i++) {
+                            var page = Math.floor((i + offset - 1) / videoPerPage);
+                            console.log(pages[page]);
+                            $(pages[page]).append(_formatVideo(data.feed.entry[i], style));
+                        }
                     } else {
                         for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
                             container.append(_formatVideo(data.feed.entry[i - 1], style));
@@ -52,6 +52,9 @@
                         $("#search_result").navigator();
                     }
                 }
+            },
+            error: function() {
+                container.html('').append('Error');
             }
         });
     }
@@ -59,7 +62,7 @@
     function _formatVideo(video, style) {
         id = video.id.$t.substr(video.id.$t.lastIndexOf('/')+1);
         thumb = video.media$group.media$thumbnail[0].url;
-        views = video.yt$statistics.viewCount;
+        views = (video.yt$statistics) ? video.yt$statistics.viewCount : 0;
         title = video.title.$t;
         rate = (video.gd$rating) ? video.gd$rating.average : 0;
 
