@@ -5,10 +5,12 @@
         $("#search_result").scrollable({
             onBeforeSeek: function(e, p) {
                 var pages = $('.items .page');
-                for (i = p; i <= i+1; i++) {
+                for (i = p, f = p + 1; i <= f; i++) {
                     var page = $(pages[i]);
-                    if (page.html() == '') {
-                        loadFeed(main_feed+'&start-index='+page.attr('rel'), '#search_result .items', 'full', 6);
+                    var rel = page.attr('rel');
+                    if (typeof rel !== 'undefined' && rel !== false) {
+                        page.removeAttr('rel');
+                        loadFeed(main_feed+'&start-index='+rel, '#search_result .items', 'full', 6);
                     }
                 }
             }
@@ -40,11 +42,17 @@
                     container.html('').append('No results');
                 } else {
                     if (videoPerPage > 0) {
-                        for (i = 0, l = Math.ceil(data.feed.openSearch$totalResults.$t / videoPerPage); i < l; i++) {
-                            var start = i * videoPerPage + 1;
-                            container.append('<div class="page" rel="' + start + '"></div>');
-                        }
                         var pages = $('.items .page');
+                        if (pages.length == 0) {
+                            for (i = 0, l = Math.ceil(data.feed.openSearch$totalResults.$t / videoPerPage); i < l; i++) {
+                                var start = i * videoPerPage + 1;
+                                if (start != 1)
+                                    container.append('<div class="page" rel="' + start + '"></div>');
+                                else
+                                    container.append('<div class="page"></div>');
+                            }
+                        }
+                        pages = $('.items .page');
                         var offset = data.feed.openSearch$startIndex.$t;
                         for(i = 0, l = data.feed.entry.length; i < l; i++) {
                             var page = Math.floor((i + offset - 1) / videoPerPage);

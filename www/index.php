@@ -12,7 +12,7 @@
     <script type="text/javascript" src="resources/js/jquery.tools.min.js"></script>
     <script type="text/javascript" src="resources/js/javascript.js"></script>
     <script type="text/javascript">
-        var channel = 'tchoukballpromotion';
+        var channel = 'youtchouk';
         var maxResultsHome = 6;
         <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
         <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated&max-results='+maxResultsHome;
@@ -21,15 +21,15 @@
     </script>
 
     <script type="text/javascript">
-        // var _gaq = _gaq || [];
-        // _gaq.push(['_setAccount', 'UA-6536789-1']);
-        // _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-6536789-1']);
+        _gaq.push(['_trackPageview']);
 
-        // (function() {
-        //     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        //     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        //     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        // })();
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
     </script>
 </head>
 <body>
@@ -87,14 +87,14 @@
             <div class="adsense_wrapper">
                 <script type="text/javascript">
                 <!--
-                    // google_ad_client = "pub-9138021364556759";
-                    // /* 468x60, creato 18/10/08 */
-                    // google_ad_slot = "4149347112";
-                    // google_ad_width = 468;
-                    // google_ad_height = 60;
+                    google_ad_client = "pub-9138021364556759";
+                    /* 468x60, creato 18/10/08 */
+                    google_ad_slot = "4149347112";
+                    google_ad_width = 468;
+                    google_ad_height = 60;
                 -->
                 </script>
-                <!-- <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script> -->
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
             </div>
         </div>
         <div id="social" class="box">
