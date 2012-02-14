@@ -67,6 +67,9 @@
                     if (container.selector == '#search_result .items' && container.find('.page').length > 1) {
                         $("#search_result").navigator();
                     }
+                    if ($('#titolo h2').html() == '') {
+                        $('#titolo h2').html(data.feed.title.$t);
+                    }
                 }
             },
             error: function() {
@@ -83,7 +86,7 @@
         rate = (video.gd$rating) ? video.gd$rating.average : 0;
 
         if (style == 'full')
-            return '<a href="/?v=' + id + '" class="video"><img src="' + thumb + '" /><p>' + title + '</p></a>';
+            return '<a href="/?v=' + id + '" class="video"><div class="thumb"><img src="' + thumb + '" /></div><p>' + title + '</p></a>';
         if (style == 'list')
             return '<li><a href="/?v=' + id + '">' + title + '</a></li>';
         if (style == 'list_views')

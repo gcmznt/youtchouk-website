@@ -24,7 +24,7 @@ h2 em {
 }
 
 #wrapper {
-	width: 960px;
+	width: 901px;
 	margin: auto;
 }
 
@@ -37,46 +37,46 @@ h2 em {
 }
 
 #menu {
-	width: 275px;
+	width: 214px;
 	padding: 15px 0;
 	height: 400px;
 	float: left;
 }
 #search {
-	width: 245px;
+	width: 184px;
 	height: 35px;
 	float: left;
 }
 #titolo {
-	width: 640px;
+	width: 642px;
 	height: 35px;
 	float: right;
 }
 #results {
-	width: 640px;
+	width: 642px;
 	height: 400px;
 	float: right;
 }
 #video {
-	width: 640px;
+	width: 642px;
 	height: 480px;
 	float: right;
 }
 #most_viewed {
-	width: 485px;
+	width: 413px;
 	float: left;
 }
 #top {
-	width: 400px;
+	width: 413px;
 	float: right;
 }
 #adsense {
-	width: 640px;
+	width: 642px;
 	height: 70px;
 	float: right;
 }
 #social {
-	width: 245px;
+	width: 184px;
 	height: 70px;
 	float: left;
 }
@@ -107,7 +107,7 @@ h2 em {
 
 #search_text {
 	height: 25px;
-	width: 200px;
+	width: 139px;
 	background: #fff url('../img/search.png') 98% center no-repeat;
 	border: 0 none;
 	border-radius: 5px;
@@ -116,13 +116,13 @@ h2 em {
 
 .video {
 	width: 180px;
-	height: 175px;
+	height: 170px;
 	float: left;
 	margin-right: 2px;
 	overflow: hidden;
 	margin-bottom: 10px;
-	font-size: 80%;
-	padding: 5px 16px;
+	font-size: 90%;
+	padding: 15px 16px 0px;
 	display: block;
 	color: #fff;
 	text-decoration: none;
@@ -130,8 +130,17 @@ h2 em {
 .video:nth-child(3n) {
 	margin-right: 0px;
 }
+.video .thumb {
+	position: relative;
+	height: 102px;
+	width: 180px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
 .video img {
 	width: 180px;
+	position: absolute;
+	top: -17px;
 }
 .video:hover {
 	background: #171717;
@@ -140,7 +149,7 @@ h2 em {
 #search_result {
 	position: relative;
 	overflow: hidden;
-	width: 640px;
+	width: 642px;
 	height: 480px;
 }
 
@@ -152,7 +161,7 @@ h2 em {
 
 #search_result .items .page {
 	float: left;
-	width: 640px;
+	width: 642px;
 }
 
 #top ul,
@@ -179,7 +188,7 @@ h2 em {
 	width: 50px;
 	height: 50px;
 	background-position: center bottom;
-	margin: 10px;
+	margin: 10px 21px;
 }
 #social a:hover {
 	background-position: center top;

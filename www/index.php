@@ -16,6 +16,7 @@
         var maxResultsHome = 6;
         <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
         <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated&max-results='+maxResultsHome;
+        <?php } elseif (isset($_GET['p'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/<?php echo $_GET['p']; ?>?alt=json&max-results='+maxResultsHome;
         <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome;
         <?php } ?>
     </script>
@@ -37,19 +38,17 @@
         <h1><a href="./">YouTchouk</a></h1>
         <div id="menu" class="box">
             <ul>
-                <li><a href="?t=2011">2011</a></li>
-                <li><a href="#">Categoria 2</a></li>
-                <li><a href="#">Categoria 3</a></li>
-                <li><a href="#">Categoria 4</a></li>
-                <li><a href="#">Categoria 5</a></li>
-                <li><a href="#">Categoria 6</a></li>
-                <li><a href="#">Categoria 7</a></li>
-                <li><a href="#">Categoria 8</a></li>
+                <li><a href="./">Home page</a></li>
+                <li><a href="?t=Championship">Championship</a></li>
+                <li><a href="?t=EWC">EWC</a></li>
+                <li><a href="?t=Beach">Beach</a></li>
+                <li><a href="?t=Videoclip">Videoclip</a></li>
+                <li><a href="?t=Rules">Rules</a></li>
             </ul>
         </div>
         <?php if (isset($_GET['v'])) { ?>
         <div id="video" class="box">
-            <iframe width="640" height="480" src="http://www.youtube.com/embed/<?php echo $_GET['v']; ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+            <iframe width="642" height="480" src="http://www.youtube.com/embed/<?php echo $_GET['v']; ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
         </div>
         <?php } else { ?>
         <div id="titolo" class="box">
@@ -58,8 +57,10 @@
                     echo 'Search results for <em>'.$_GET['q'].'</em>';
                 elseif (isset($_GET['t']))
                     echo $_GET['t'];
+                elseif (isset($_GET['p']))
+                    echo '';
                 else
-                    echo 'Most recent';
+                    echo 'Last videos';
             ?></h2>
         </div>
         <div id="results" class="box">
