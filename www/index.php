@@ -44,6 +44,7 @@
                 <li><a href="?t=Beach">Beach</a></li>
                 <li><a href="?t=Videoclip">Videoclip</a></li>
                 <li><a href="?t=Rules">Rules</a></li>
+                <li><a href="/yt">Old YouTchouk</a></li>
             </ul>
         </div>
         <?php if (isset($_GET['v'])) { ?>
