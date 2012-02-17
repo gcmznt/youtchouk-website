@@ -16,8 +16,8 @@
             }
         });
         loadFeed(main_feed, '#search_result .items', 'full', 6);
-        loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
-        loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=rating&max-results=6', '#top ul', 'list');
+        loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
+        loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=rating&max-results=6', '#top ul', 'list');
 
         $('#search_form').submit(function() {
             var query = $('#search_text').val();
@@ -38,13 +38,14 @@
             url: feed,
             dataType: 'json',
             success: function(data) {
-                if (data.feed.openSearch$totalResults.$t == 0) {
+                data = data.data;
+                if (data.totalItems == 0) {
                     container.html('').append('No results');
                 } else {
                     if (videoPerPage > 0) {
                         var pages = $('.items .page');
                         if (pages.length == 0) {
-                            for (i = 0, l = Math.ceil(data.feed.openSearch$totalResults.$t / videoPerPage); i < l; i++) {
+                            for (i = 0, l = Math.ceil(data.totalItems / videoPerPage); i < l; i++) {
                                 var start = i * videoPerPage + 1;
                                 if (start != 1)
                                     container.append('<div class="page" rel="' + start + '"></div>');
@@ -53,14 +54,14 @@
                             }
                         }
                         pages = $('.items .page');
-                        var offset = data.feed.openSearch$startIndex.$t;
-                        for(i = 0, l = data.feed.entry.length; i < l; i++) {
+                        var offset = data.startIndex;
+                        for(i = 0, l = data.items.length; i < l; i++) {
                             var page = Math.floor((i + offset - 1) / videoPerPage);
-                            $(pages[page]).append(_formatVideo(data.feed.entry[i], style));
+                            $(pages[page]).append(_formatVideo(data.items[i], style));
                         }
                     } else {
-                        for(i = 1, l = data.feed.entry.length; i < l + 1; i++) {
-                            container.append(_formatVideo(data.feed.entry[i - 1], style));
+                        for(i = 1, l = data.items.length; i < l + 1; i++) {
+                            container.append(_formatVideo(data.items[i - 1], style));
                         }
                     }
                     container.find('.loading').remove();
@@ -68,7 +69,7 @@
                         $("#search_result").navigator();
                     }
                     if ($('#titolo h2').html() == '') {
-                        $('#titolo h2').html(data.feed.title.$t);
+                        // $('#titolo h2').html(data.feed.title.$t);
                     }
                 }
             },
@@ -79,11 +80,11 @@
     }
 
     function _formatVideo(video, style) {
-        id = video.id.$t.substr(video.id.$t.lastIndexOf('/')+1);
-        thumb = video.media$group.media$thumbnail[0].url;
-        views = (video.yt$statistics) ? video.yt$statistics.viewCount : 0;
-        title = video.title.$t;
-        rate = (video.gd$rating) ? video.gd$rating.average : 0;
+        id = video.id;
+        thumb = video.thumbnail.sqDefault;
+        views = (video.viewCount) ? video.viewCount : 0;
+        title = video.title;
+        // rate = (video.gd$rating) ? video.gd$rating.average : 0;
 
         if (style == 'full')
             return '<a href="/?v=' + id + '" class="video"><div class="thumb"><img src="' + thumb + '" /></div><p>' + title + '</p></a>';
@@ -91,8 +92,8 @@
             return '<li><a href="/?v=' + id + '">' + title + '</a></li>';
         if (style == 'list_views')
             return '<li><a href="/?v=' + id + '">' + title + '<span>'+views+'</span></a></li>';
-        if (style == 'list_rate')
-            return '<li><a href="/?v=' + id + '">'+rate+' &bull; ' + title + '</a></li>';
+        // if (style == 'list_rate')
+        //     return '<li><a href="/?v=' + id + '">'+rate+' &bull; ' + title + '</a></li>';
     }
 
 

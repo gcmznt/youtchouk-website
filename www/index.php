@@ -14,10 +14,10 @@
     <script type="text/javascript">
         var channel = 'youtchouk';
         var maxResultsHome = 6;
-        <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
-        <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/-/<?php echo $_GET['t']; ?>?alt=json&orderby=updated&max-results='+maxResultsHome;
-        <?php } elseif (isset($_GET['p'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/<?php echo $_GET['p']; ?>?alt=json&max-results='+maxResultsHome;
-        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=json&orderby=updated&max-results='+maxResultsHome;
+        <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
+        <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/?alt=jsonc&v=2&category=<?php echo $_GET['t']; ?>&max-results='+maxResultsHome;
+        <?php } elseif (isset($_GET['p'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/<?php echo $_GET['p']; ?>?alt=jsonc&v=2&max-results='+maxResultsHome;
+        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&max-results='+maxResultsHome;
         <?php } ?>
     </script>
 
