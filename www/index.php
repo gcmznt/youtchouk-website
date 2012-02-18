@@ -17,7 +17,8 @@
         <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
         <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/?alt=jsonc&v=2&category=<?php echo $_GET['t']; ?>&max-results='+maxResultsHome;
         <?php } elseif (isset($_GET['p'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/<?php echo $_GET['p']; ?>?alt=jsonc&v=2&max-results='+maxResultsHome;
-        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&max-results='+maxResultsHome;
+        <?php } elseif (isset($_GET['s'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=<?php echo $_GET['s']; ?>&max-results='+maxResultsHome;
+        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/A84A9ACFED641E80?alt=jsonc&v=2&max-results='+maxResultsHome;
         <?php } ?>
     </script>
 
@@ -39,7 +40,8 @@
         <div id="menu" class="box">
             <ul>
                 <li><a href="./">Home page</a></li>
-                <li><a href="?t=Championship">Championship</a></li>
+                <!-- <li><a href="?s=published">Last videos</a></li> -->
+                <li><a href="?t=National%2Cchampionship">Championship</a></li>
                 <li><a href="?t=EWC">EWC</a></li>
                 <li><a href="?t=Beach">Beach</a></li>
                 <li><a href="?t=Videoclip">Videoclip</a></li>
@@ -57,11 +59,13 @@
                 if (isset($_GET['q']))
                     echo 'Search results for <em>'.$_GET['q'].'</em>';
                 elseif (isset($_GET['t']))
-                    echo $_GET['t'];
+                    echo str_replace(',', ' ', $_GET['t']);
                 elseif (isset($_GET['p']))
                     echo '';
-                else
+                elseif (isset($_GET['s']) && $_GET['s'] == 'published')
                     echo 'Last videos';
+                else
+                    echo 'Home page';
             ?></h2>
         </div>
         <div id="results" class="box">

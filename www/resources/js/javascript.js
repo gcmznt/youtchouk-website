@@ -80,11 +80,13 @@
     }
 
     function _formatVideo(video, style) {
+        if (video.video)
+            video = video.video;
+        
         id = video.id;
         thumb = video.thumbnail.sqDefault;
         views = (video.viewCount) ? video.viewCount : 0;
         title = video.title;
-        // rate = (video.gd$rating) ? video.gd$rating.average : 0;
 
         if (style == 'full')
             return '<a href="/?v=' + id + '" class="video"><div class="thumb"><img src="' + thumb + '" /></div><p>' + title + '</p></a>';
@@ -92,8 +94,6 @@
             return '<li><a href="/?v=' + id + '">' + title + '</a></li>';
         if (style == 'list_views')
             return '<li><a href="/?v=' + id + '">' + title + '<span>'+views+'</span></a></li>';
-        // if (style == 'list_rate')
-        //     return '<li><a href="/?v=' + id + '">'+rate+' &bull; ' + title + '</a></li>';
     }
 
 
