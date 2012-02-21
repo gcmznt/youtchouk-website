@@ -10,17 +10,20 @@
     
     <script type="text/javascript" src="resources/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery.tools.min.js"></script>
-    <script type="text/javascript" src="resources/js/javascript.js"></script>
     <script type="text/javascript">
         var channel = 'youtchouk';
         var maxResultsHome = 6;
-        <?php if (isset($_GET['q'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
-        <?php } elseif (isset($_GET['t'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/?alt=jsonc&v=2&category=<?php echo $_GET['t']; ?>&max-results='+maxResultsHome;
-        <?php } elseif (isset($_GET['p'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/<?php echo $_GET['p']; ?>?alt=jsonc&v=2&max-results='+maxResultsHome;
-        <?php } elseif (isset($_GET['s'])) { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=<?php echo $_GET['s']; ?>&max-results='+maxResultsHome;
-        <?php } else { ?>var main_feed = 'https://gdata.youtube.com/feeds/api/playlists/A84A9ACFED641E80?alt=jsonc&v=2&max-results='+maxResultsHome;
+        var main_feed;
+        var video_data;
+        <?php if (isset($_GET['q'])) { ?>main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&max-results='+maxResultsHome+'&q=<?php echo $_GET['q']; ?>';
+        <?php } elseif (isset($_GET['t'])) { ?>main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads/?alt=jsonc&v=2&category=<?php echo $_GET['t']; ?>&max-results='+maxResultsHome;
+        <?php } elseif (isset($_GET['p'])) { ?>main_feed = 'https://gdata.youtube.com/feeds/api/playlists/<?php echo $_GET['p']; ?>?alt=jsonc&v=2&max-results='+maxResultsHome;
+        <?php } elseif (isset($_GET['s'])) { ?>main_feed = 'https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=<?php echo $_GET['s']; ?>&max-results='+maxResultsHome;
+        <?php } elseif (isset($_GET['v'])) { ?>video_data = 'https://gdata.youtube.com/feeds/api/videos/<?php echo $_GET['v']; ?>?alt=jsonc&v=2';
+        <?php } else { ?>main_feed = 'https://gdata.youtube.com/feeds/api/playlists/A84A9ACFED641E80?alt=jsonc&v=2&max-results='+maxResultsHome;
         <?php } ?>
     </script>
+    <script type="text/javascript" src="resources/js/javascript.js"></script>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -37,21 +40,31 @@
 <body>
     <div id="wrapper">
         <h1><a href="./">YouTchouk</a></h1>
-        <div id="menu" class="box">
-            <ul>
-                <li><a href="./">Home page</a></li>
-                <!-- <li><a href="?s=published">Last videos</a></li> -->
-                <li><a href="?t=National%2Cchampionship">Championship</a></li>
-                <li><a href="?t=EWC">EWC</a></li>
-                <li><a href="?t=Beach">Beach</a></li>
-                <li><a href="?t=Videoclip">Videoclip</a></li>
-                <li><a href="?t=Rules">Rules</a></li>
-                <li><a href="/yt">Old YouTchouk</a></li>
-            </ul>
+        <div style="float:left;width:214px;">
+            <div id="menu" class="box">
+                <ul>
+                    <li><a href="./">Home page</a></li>
+                    <!-- <li><a href="?s=published">Last videos</a></li> -->
+                    <li><a href="?t=National%2Cchampionship">Championship</a></li>
+                    <li><a href="?t=EWC">EWC</a></li>
+                    <li><a href="?t=Beach">Beach</a></li>
+                    <li><a href="?t=Videoclip">Videoclip</a></li>
+                    <li><a href="?t=Rules">Rules</a></li>
+                    <li><a href="/yt">Old YouTchouk</a></li>
+                </ul>
+            </div>
+            <div id="search" class="box">
+                <form id="search_form">
+                    <input id="search_text" <?php if (isset($_GET['q'])) echo ' value="'.$_GET['q'].'"'; ?>/>
+                </form>
+            </div>
         </div>
         <?php if (isset($_GET['v'])) { ?>
         <div id="video" class="box">
             <iframe width="642" height="480" src="http://www.youtube.com/embed/<?php echo $_GET['v']; ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div id="descrizione" class="box">
+            
         </div>
         <?php } else { ?>
         <div id="titolo" class="box">
@@ -76,11 +89,6 @@
             </div>
         </div>
         <?php } ?>
-        <div id="search" class="box">
-            <form id="search_form">
-                <input id="search_text" <?php if (isset($_GET['q'])) echo ' value="'.$_GET['q'].'"'; ?>/>
-            </form>
-        </div>
         <div id="most_viewed" class="box">
             <h3>Most viewed</h3>
             <ul><span class="loading">Loading...</span></ul>

@@ -15,7 +15,9 @@
                 }
             }
         });
-        loadFeed(main_feed, '#search_result .items', 'full', 6);
+        if (main_feed != undefined) {
+            loadFeed(main_feed, '#search_result .items', 'full', 6);
+        }
         loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
         loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=rating&max-results=6', '#top ul', 'list');
 
@@ -24,6 +26,16 @@
             document.location.href = '?q='+encodeURIComponent(query);
             return false;
         });
+
+        if (video_data != undefined) {
+            $.ajax({
+                url: video_data,
+                dataType: 'json',
+                success: function(data) {
+                    $('#descrizione').html(data.data.description);
+                }
+            });
+        }
     });
 
     function loadFeed(feed, domId, style, videoPerPage) {

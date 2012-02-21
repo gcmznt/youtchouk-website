@@ -62,6 +62,12 @@ h2 em {
 	height: 480px;
 	float: right;
 }
+#descrizione {
+	width: 871px;
+	float: left;
+	font-size: 90%;
+	font-style: italic;
+}
 #most_viewed {
 	width: 413px;
 	float: left;
