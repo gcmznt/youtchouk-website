@@ -32,7 +32,7 @@
                 url: video_data,
                 dataType: 'json',
                 success: function(data) {
-                    $('#descrizione').html(data.data.description).show();
+                    $('#descrizione').html(data.data.description.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2')).show();
                 }
             });
         }
