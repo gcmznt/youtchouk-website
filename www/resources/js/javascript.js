@@ -32,7 +32,7 @@
                 url: video_data,
                 dataType: 'json',
                 success: function(data) {
-                    $('#descrizione').html(data.data.description);
+                    $('#descrizione').html(data.data.description).show();
                 }
             });
         }

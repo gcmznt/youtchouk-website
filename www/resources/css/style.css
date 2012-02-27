@@ -67,6 +67,7 @@ h2 em {
 	float: left;
 	font-size: 90%;
 	font-style: italic;
+	display: none;
 }
 #most_viewed {
 	width: 413px;
@@ -173,6 +174,7 @@ h2 em {
 #top ul,
 #most_viewed ul {
 	margin: 10px;
+	position: relative;
 }
 #top ul a,
 #most_viewed ul a {
@@ -185,7 +187,8 @@ h2 em {
 	text-decoration: none;
 }
 #most_viewed ul a span {
-	float: right;
+	position: absolute;
+	right: 0;
 }
 
 #social a {
