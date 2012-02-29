@@ -4,6 +4,7 @@ html {
 body {
 	background: #171717;
 	font-family: 'Asap', sans-serif;
+	position: relative;
 }
 
 h1 a {
@@ -11,6 +12,7 @@ h1 a {
 	background: url('../img/title_new.png') center center no-repeat;
 	height: 170px;
 	display: block;
+	margin: 20px 0px;
 }
 h2 {
 	font-size: 28px;
@@ -33,6 +35,8 @@ h3 a {
 #wrapper {
 	width: 901px;
 	margin: auto;
+	overflow: auto;
+	padding: 0 20px 20px;
 }
 
 .box {
@@ -242,4 +246,18 @@ h3 a {
 	width: 31px;
 	height: 31px;
 	text-indent: -1000em;
+}
+
+#giko {
+	text-indent: -1000em;
+	position: absolute;
+	display: block;
+	right: 10px;
+	bottom: 10px;
+	background-image: url('../img/15.png');
+	width: 50px;
+	height: 42px;
+	opacity: 0.35;
+	-moz-opacity: 0.35;
+	filter: alpha(opacity=35);
 }

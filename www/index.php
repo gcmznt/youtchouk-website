@@ -120,6 +120,7 @@
             <a id="yt" href="http://www.youtube.com/youtchouk"></a>
         </div>
     </div>
+    <a href="http://www.giko.it" id="giko">Sito realizzato da Giko</a>
 </body>
 </html>
     
