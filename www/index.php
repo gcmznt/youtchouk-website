@@ -44,8 +44,8 @@
             <div id="menu" class="box">
                 <ul>
                     <li><a href="./">Home page</a></li>
-                    <!-- <li><a href="?s=published">Last videos</a></li> -->
-                    <li><a href="?t=National%2Cchampionship">Championship</a></li>
+                    <li><a href="?s=published">Last videos</a></li>
+                    <li><a href="?t=National%2Cchampionship">National Championship</a></li>
                     <li><a href="?t=EWC">EWC</a></li>
                     <li><a href="?t=Beach">Beach</a></li>
                     <li><a href="?t=Videoclip">Videoclip</a></li>
@@ -77,6 +77,10 @@
                     echo '';
                 elseif (isset($_GET['s']) && $_GET['s'] == 'published')
                     echo 'Last videos';
+                elseif (isset($_GET['s']) && $_GET['s'] == 'viewCount')
+                    echo 'Most viewed';
+                elseif (isset($_GET['s']) && $_GET['s'] == 'rating')
+                    echo 'Best videos';
                 else
                     echo 'Home page';
             ?></h2>
@@ -90,11 +94,11 @@
         </div>
         <?php } ?>
         <div id="most_viewed" class="box">
-            <h3>Most viewed</h3>
+            <h3><a href="?s=viewCount">Most viewed</a></h3>
             <ul><span class="loading">Loading...</span></ul>
         </div>
         <div id="top" class="box">
-            <h3>Best</h3>
+            <h3><a href="?s=rating">Best</a></h3>
             <ul><span class="loading">Loading...</span></ul>
         </div>
         <div id="adsense" class="box">
