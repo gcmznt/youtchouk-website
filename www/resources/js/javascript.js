@@ -30,7 +30,7 @@ $(document).ready(function() {
     if (video_data != undefined) {
         $.ajax({
             url: video_data,
-            dataType: 'json',
+            dataType: 'jsonp',
             success: function(data) {
                 $('#descrizione').html(data.data.description.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2')).show();
             }
