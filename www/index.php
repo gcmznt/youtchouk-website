@@ -3,6 +3,8 @@
 <head>
     <title>YOUtchouk</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <link rel="shortcut icon" href="resources/img/favicon.png" type="image/png" />
+    <link rel="icon" href="resources/img/favicon.png" type="image/png" />
     
     <link rel="stylesheet" type="text/css" href="resources/css/reset-min.css" />
     <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
