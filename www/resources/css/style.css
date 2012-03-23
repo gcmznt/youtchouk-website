@@ -197,6 +197,10 @@ h3 a {
 	color: #666;
 	text-decoration: none;
 }
+#top ul a:hover,
+#most_viewed ul a:hover {
+	color: #999;
+}
 #most_viewed ul a span {
 	position: absolute;
 	right: 0;

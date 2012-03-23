@@ -1,7 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<?php
+
+    if (isset($_GET['video'])) {
+        header('Location: /yt/?video='.$_GET['video']);
+        die();
+    }
+
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>YOUtchouk</title>
+    <title>YOUtchouk - Let's Play TchoukBall!</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <link rel="shortcut icon" href="resources/img/favicon.png" type="image/png" />
     <link rel="icon" href="resources/img/favicon.png" type="image/png" />
