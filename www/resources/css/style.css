@@ -80,7 +80,13 @@ h3 a {
 	float: left;
 	font-size: 90%;
 	font-style: italic;
+	color: #666;
 	display: none;
+}
+#descrizione h3 {
+	color: #fff;
+	font-size: 120%;
+	font-style: normal;
 }
 #most_viewed {
 	width: 413px;
