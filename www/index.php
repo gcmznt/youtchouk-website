@@ -110,6 +110,21 @@
             <h3><a href="?s=rating">Best</a></h3>
             <ul><span class="loading">Loading...</span></ul>
         </div>
+        <div id="banner" class="box">
+            <div id="join">
+                Have you some tchoukball videos?<br />
+                Do you want to share them on YOUtchouk?<br />
+                <big><span>Join</span> us!</big><br />
+                Write an email to join@youtchouk.com
+            </div>
+        </div>
+        <div id="social" class="box">
+            <a id="fb" href="http://www.facebook.com/youtchouk">Facebook Page</a>
+            <a id="yt" href="http://www.youtube.com/youtchouk">Youtube Page</a>
+        </div>
+        <div id="partner" class="box">
+            <a id="ftbi" href="http://www.tchoukball.it">FTBI - Federazione TchoukBall Italia</a>
+        </div>
         <div id="adsense" class="box">
             <div class="adsense_wrapper">
                 <script type="text/javascript">
@@ -123,10 +138,6 @@
                 </script>
                 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
             </div>
-        </div>
-        <div id="social" class="box">
-            <a id="fb" href="http://www.facebook.com/pages/YouTchouk/140981555717"></a>
-            <a id="yt" href="http://www.youtube.com/youtchouk"></a>
         </div>
     </div>
     <a href="http://www.giko.it" id="giko">Sito realizzato da Giko</a>
