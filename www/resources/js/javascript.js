@@ -32,7 +32,9 @@ $(document).ready(function() {
             url: video_data,
             dataType: 'jsonp',
             success: function(data) {
-                $('#descrizione').html(data.data.description.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2')).show();
+                console.log(data.data);
+                $('#descrizione').append('<h3>' + data.data.title + '</h3>');
+                $('#descrizione').append(data.data.description.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2')).show();
             }
         });
     }

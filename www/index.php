@@ -47,6 +47,14 @@
     </script>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1&appId=242888632473039";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div id="wrapper">
         <h1><a href="./">YouTchouk</a></h1>
         <div style="float:left;width:214px;">
@@ -73,7 +81,9 @@
             <iframe width="642" height="480" src="http://www.youtube.com/embed/<?php echo $_GET['v']; ?>?autoplay=1" frameborder="0" allowfullscreen></iframe>
         </div>
         <div id="descrizione" class="box">
-            
+            <div class="fb-like-container">
+                <div class="fb-like" data-href="http://www.youtchouk.com/?v=wyZxQ1voTfI" data-send="false" data-layout="box_count" data-width="64" data-show-faces="true" data-colorscheme="dark"></div>
+            </div>
         </div>
         <?php } else { ?>
         <div id="titolo" class="box">

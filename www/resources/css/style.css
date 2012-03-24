@@ -46,6 +46,7 @@ h3 a {
 	margin-bottom: 15px;
 	color: #ccc;
 	box-shadow: 2px 2px 5px #000;
+	position: relative;
 }
 
 #menu {
@@ -313,4 +314,10 @@ h3 a {
 }
 #join big span {
 	color: #00ADEF;
+}
+
+.fb-like-container {
+	float: right;
+	width: 64px;
+	height: 62px;
 }
