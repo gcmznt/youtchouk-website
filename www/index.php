@@ -82,7 +82,7 @@
         </div>
         <div id="descrizione" class="box">
             <div class="fb-like-container">
-                <div class="fb-like" data-href="http://www.youtchouk.com/?v=wyZxQ1voTfI" data-send="false" data-layout="box_count" data-width="64" data-show-faces="true" data-colorscheme="dark"></div>
+                <div class="fb-like" data-href="http://www.youtchouk.com/?v=<?php echo $_GET['v']; ?>" data-send="false" data-layout="box_count" data-width="64" data-show-faces="true" data-colorscheme="dark"></div>
             </div>
         </div>
         <?php } else { ?>
