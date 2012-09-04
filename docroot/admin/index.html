@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>YouTchouk Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTchouk Admin">
+    <meta name="author" content="Giko">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/resources/css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">YouTchouk Admin</a>
+                <ul class="nav pull-right">
+                    <li class="">
+                        <a>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="appContainer">
+        <div class="row">
+            <div class="span5" id="videoCol">
+                <h2>Video</h2>
+                <input type="text" class="search-query" placeholder="Search">
+                <ul class="nav nav-pills nav-stacked" id="videoList">
+                </ul>
+            </div>
+            <div class="span6 offset1">
+                <h3>Dettagli video</h3>
+                <div id="videoDetails">
+                    <form class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">Email</label>
+                            <div class="controls">
+                                <input type="text" id="inputEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputPassword">Password</label>
+                            <div class="controls">
+                                <input type="password" id="inputPassword" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Salva</button>
+                            <button type="submit" class="btn">Annulla</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/resources/js/json2.js"></script>
+    <script src="/resources/js/jquery-1.7.1.min.js"></script>
+    <script src="/resources/js/underscore-min.js"></script>
+    <script src="/resources/js/backbone-min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/admin.js"></script>
+
+    <script type="text/html" id="video-template">
+        <a href="#"><%- name %></a>
+    </script>
+
+    <script type="text/html" id="video-details-template">
+        <dl class="dl-horizontal">
+            <dt>ID</dt>
+            <dd><%- id %></dd>
+            <dt>Nome</dt>
+            <dd><%- name %></dd>
+        </dl>
+    </script>
+
+</body>
+</html>
