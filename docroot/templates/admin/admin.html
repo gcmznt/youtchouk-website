@@ -1,0 +1,34 @@
+{% extends 'admin/base.html' %}
+
+{% block mainContent %}
+
+            <div class="span7" id="videoCol">
+                <legend>Video list</legend>
+                <div class="btn-toolbar">
+                    <div class="btn-group pull-left">
+                        <button class="btn"><i class="icon-tasks"></i> Actions</button>
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="publishSelected"><i class="icon-ok-circle"></i> Publish selected</a></li>
+                            <li><a href="#" id="unpublishSelected"><i class="icon-ban-circle"></i> Unpublish selected</a></li>
+                            <li><a href="#" id="deleteSelected"><i class="icon-remove"></i> Delete selected</a></li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-primary " id="nuovoVideo"><i class="icon-plus icon-white"></i> New video</a>
+                    <input type="text" class="span4 search-query pull-right" placeholder="Search" />
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <th><input type="checkbox" id="checkAll" /></th>
+                        <th>YouTube code</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody id="videoList">
+                    </tbody>
+                </table>
+            </div>
+            <div class="span5" id="videoDetails">
+            </div>
+{% endblock %}

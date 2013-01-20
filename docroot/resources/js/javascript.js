@@ -15,7 +15,13 @@ $(document).ready(function() {
             }
         }
     });
-    if (main_feed != undefined) {
+    $('#search_form_n').submit(function() {
+        var query = $('#search_text').val();
+        document.location.href = '/s/' + encodeURIComponent(query) + '/';
+        return false;
+    });
+
+    if (main_feed !== undefined) {
         loadFeed(main_feed, '#search_result .items', 'full', 6);
     }
     loadFeed('https://gdata.youtube.com/feeds/api/users/'+channel+'/uploads?alt=jsonc&v=2&orderby=viewCount&max-results=6', '#most_viewed ul', 'list_views');
@@ -27,7 +33,7 @@ $(document).ready(function() {
         return false;
     });
 
-    if (video_data != undefined) {
+    if (video_data !== undefined) {
         $.ajax({
             url: video_data,
             dataType: 'jsonp',

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>YouTchouk Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTchouk Admin">
+    <meta name="author" content="Giko">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <ul class="nav pull-right">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="loginContainer">
+        <div class="row">
+            <div class="span7">
+                <div class="hero-unit">
+                    <h1>YouTchouk Admin</h1>
+                    <p>
+                        Welcome!<br />
+                        If you want to join the YouTchouk team write to <a href="mailto:join@youtchouk.com">join@youtchouk.com</a>
+                    </p>
+                    <p><a class="btn btn-primary btn-large" href="/">back to website <i class="icon-globe icon-white"></i></a></p>
+                </div>
+            </div>
+            <div class="span5">
+                <form class="form-horizontal" id="login-form">
+                    <legend>Login</legend>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Email</label>
+                        <div class="controls">
+                            <input type="text" id="email" name="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <div class="controls">
+                            <input type="password" id="password" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button class="btn">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ STATIC_URL }}js/json2.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
+    <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+    <script src="{{ STATIC_URL }}js/admin-login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    {% if title %}
+    <div id="titolo" class="box">
+        <h2>{{ title|raw }}</h2>
+    </div>
+    {% endif %}
+    <div id="results" class="box">
+            <ul class="videoList">
+                {% for video in videos %}
+                    <a href="/video/{{ video.code }}/">
+                        <li>
+                            <div class="thumb">
+                                <img src="http://i.ytimg.com/vi/{{ video.code }}/default.jpg" />
+                            </div>
+                            <h3>{{ video.name|raw }}</h3>
+                            <p>{{ video.description|raw }}</p>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+    </div>
+{% endblock %}

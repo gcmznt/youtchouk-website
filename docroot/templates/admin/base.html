@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>YouTchouk Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTchouk Admin">
+    <meta name="author" content="Giko">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/datepicker.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/">YouTchouk</a>
+                <ul class="nav pull-right">
+                    <li class="">
+                        <a href="/admin/">Manage video</a>
+                    </li>
+                    <li class="">
+                        <a href="/admin/profile/">{% if user.name %}{{ user.name }}{% else %}Profilo{% endif %}</a>
+                    </li>
+                    <li class="">
+                        <a href="/admin/logout/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="appContainer">
+        <div class="row-fluid">
+            {% block mainContent %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="{{ STATIC_URL }}js/json2.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
+    <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap-datepicker.js"></script>
+    
+    <script src="{{ STATIC_URL }}js/admin.js"></script>
+
+    <script type="text/html" id="video-template">
+            <td><input type="checkbox" value="<%- code %>" /></td>
+            <td><%- code %></td>
+            <td><a><%- name %></a></td>
+            <td><% if (date != '0000-00-00') { %><%- date %><% } %></td>
+            <td>
+            <% if (publish == 1) { %>
+                <span class=" label label-success">online</span>
+            <% } else { %>
+                <span class=" label label-important">offline</span>
+            <% } %>
+            </td>
+    </script>
+
+    <script type="text/html" id="video-details-template">
+        <div class="">
+            <legend>Video details</legend>
+            <form>
+                <div class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="code">YouTube code</label>
+                        <div class="controls">
+                            <input type="text" class="span11" id="code" name="code" placeholder="YouTube code" value="<% if (code) { %><%- code %><% } %>" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="name">Title</label>
+                        <div class="controls">
+                            <input type="text" class="span11" id="name" name="name" placeholder="Title" value="<% if (name) { %><%- name %><% } %>" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="description">Description</label>
+                        <div class="controls">
+                            <textarea class="span11" id="description" name="description" placeholder="Description" style="height: 100px;"><% if (description) { %><%- description %><% } %></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="type">Type</label>
+                        <div class="controls">
+                            <select class="span11" id="type" name="type">
+                                <option value=""></option>
+                                <option value="Match"<% if (type == 'Match') { %> selected="selected"<% } %>>Match</option>
+                                <option value="Videoclip"<% if (type == 'Videoclip') { %> selected="selected"<% } %>>Videoclip</option>
+                                <option value="Tutorial"<% if (type == 'Tutorial') { %> selected="selected"<% } %>>Tutorial</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="event">Event</label>
+                        <div class="controls">
+                            <select class="span11" id="event" name="event">
+                                <option value=""></option>
+                                <option value="National championship"<% if (event == 'National championship') { %> selected="selected"<% } %>>National championship</option>
+                                <option value="World championship"<% if (event == 'World championship') { %> selected="selected"<% } %>>World championship</option>
+                                <option value="Continental championship"<% if (event == 'Continental championship') { %> selected="selected"<% } %>>Continental championship</option>
+                                <option value="Winners Cup"<% if (event == 'Winners Cup') { %> selected="selected"<% } %>>Winners Cup</option>
+                                <option value="Friendly"<% if (event == 'Friendly') { %> selected="selected"<% } %>>Friendly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="category">Category</label>
+                        <div class="controls">
+                            <select class="span11" id="category" name="category">
+                                <option value=""></option>
+                                <option value="Open"<% if (category == 'Open') { %> selected="selected"<% } %>>Open</option>
+                                <option value="Mixed"<% if (category == 'Mixed') { %> selected="selected"<% } %>>Mixed</option>
+                                <option value="Men"<% if (category == 'Men') { %> selected="selected"<% } %>>Men</option>
+                                <option value="Women"<% if (category == 'Women') { %> selected="selected"<% } %>>Women</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="mage">Max age</label>
+                        <div class="controls">
+                            <select class="span11" id="mage" name="mage">
+                                <option value=""></option>
+                                <option value="M18"<% if (mage == 'M18') { %> selected="selected"<% } %>>M18</option>
+                                <option value="M15"<% if (mage == 'M15') { %> selected="selected"<% } %>>M15</option>
+                                <option value="M12"<% if (mage == 'M12') { %> selected="selected"<% } %>>M12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="round">Round</label>
+                        <div class="controls">
+                            <select class="span11" id="round" name="round">
+                                <option value=""></option>
+                                <option value="Final"<% if (round == 'Final') { %> selected="selected"<% } %>>Final</option>
+                                <option value="Final 3rd-4th"<% if (round == 'Final 3rd-4th') { %> selected="selected"<% } %>>Final 3rd-4th</option>
+                                <option value="Semi-final"<% if (round == 'Semi-final') { %> selected="selected"<% } %>>Semi-final</option>
+                                <option value="Quarter-final"<% if (round == 'Quarter-final') { %> selected="selected"<% } %>>Quarter-final</option>
+                                <option value="Playoff"<% if (round == 'Playoff') { %> selected="selected"<% } %>>Playoff</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="terrain">Terrain</label>
+                        <div class="controls">
+                            <select class="span11" id="terrain" name="terrain">
+                                <option value=""></option>
+                                <option value="Indoor"<% if (terrain == 'Indoor') { %> selected="selected"<% } %>>Indoor</option>
+                                <option value="Beach"<% if (terrain == 'Beach') { %> selected="selected"<% } %>>Beach</option>
+                                <option value="Green"<% if (terrain == 'Green') { %> selected="selected"<% } %>>Green</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="country">Country</label>
+                        <div class="controls">
+                            <input type="text" class="span11" id="country" name="country" placeholder="Country" value="<% if (country) { %><%- country %><% } %>" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="city">City</label>
+                        <div class="controls">
+                            <input type="text" class="span11" id="city" name="city" placeholder="City" value="<% if (city) { %><%- city %><% } %>" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="date">Date</label>
+                        <div class="controls">
+                            <input type="text" class="span11 datepicker" id="date" name="date" placeholder="Date" value="<% if (date) { %><%- date %><% } else { %><% } %>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions read">
+                    <div class="pull-left">
+                        <a class="btn modifyVideo"><i class="icon-edit"></i> Modify</a>
+                        <% if (publish == 1) { %>
+                            <a class="btn unpublishVideo"><i class="icon-ban-circle"></i> Unpublish</a>
+                        <% } else { %>
+                            <a class="btn publishVideo"><i class="icon-ok-circle"></i> Publish</a>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="form-actions modify">
+                    <div class="pull-left">
+                        <a class="btn saveVideo"><i class="icon-check"></i> Save</a>
+                        <a class="btn undoVideo"><i class="icon-arrow-left"></i> Undo</a>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-danger deleteVideo"><i class="icon-remove icon-white"></i> Delete</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+
+</body>
+</html>

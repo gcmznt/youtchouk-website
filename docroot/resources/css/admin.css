@@ -1,6 +1,12 @@
 body {
-    padding-top: 40px;
+    padding-top: 60px;
 }
 
-#videoCol {
+#videoCol .search-query {
+    margin-bottom: 9px;
+    margin-right: 10px;
 }
+#videoCol #runAction {
+    margin-bottom: 9px;
+}
+
